@@ -1,0 +1,285 @@
+!SESSION 2023-09-13 23:17:49.613 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=11.0.11
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_MX
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.nxp.mcuxpresso.core.datamodels 1 0 2023-09-13 23:18:26.454
+!MESSAGE Recreating part support. No part support available.
+
+!ENTRY com.nxp.mcuxpresso.core.datamodels 1 0 2023-09-13 23:18:31.303
+!MESSAGE The device 'MK64FN1M0xxx12' (version='1.0.0') from SDK 'SDK_2.x_FRDM-K64F' (version='2.11.0', build='541 2022-01-14') will be installed.
+
+!ENTRY com.nxp.mcuxpresso.core.datamodels 1 0 2023-09-13 23:18:32.745
+!MESSAGE The device 'MK66FN2M0xxx18' (version='1.0.0') from SDK 'SDK_2.x_FRDM-K66F' (version='2.11.0', build='541 2022-01-14') will be installed.
+
+!ENTRY org.eclipse.cdt.core 1 0 2023-09-13 23:18:58.178
+!MESSAGE Indexed 'frdmk64f_lwip_tcpecho_freertos' (0 sources, 0 headers) in 0.003 sec: 0 declarations; 0 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0 %)
+
+!ENTRY com.crt.log 1 0 2023-09-13 23:25:52.254
+!MESSAGE Trying to connect to redlink server on port 3025.
+
+!ENTRY com.nxp.mcuxpresso.core.debug.support.linkserver 1 0 2023-09-13 23:25:52.260
+!MESSAGE RedlinkServer telnet session connected on port 3025->65386 @ 127.0.0.1
+
+!ENTRY com.nxp.mcuxpresso.core.debug.support.linkserver 4 0 2023-09-13 23:25:54.793
+!MESSAGE Unable to parse ProbeList output to get probe ref count: []
+
+!ENTRY com.nxp.mcuxpresso.core.debug 1 0 2023-09-13 23:26:06.710
+!MESSAGE Telnet session connected on port 2333->65406 @ 127.0.0.1
+
+!ENTRY com.crt.utils 1 0 2023-09-13 23:26:07.271
+!MESSAGE Connected to 127.0.0.1 on port 2332.
+
+!ENTRY com.nxp.mcuxpresso.core.debug 1 0 2023-09-13 23:32:45.302
+!MESSAGE Telnet session connected on port 2333->65519 @ 127.0.0.1
+
+!ENTRY com.crt.utils 1 0 2023-09-13 23:32:45.730
+!MESSAGE Connected to 127.0.0.1 on port 2332.
+
+!ENTRY com.nxp.mcuxpresso.core.debug 1 0 2023-09-13 23:44:05.008
+!MESSAGE Telnet session connected on port 2333->60074 @ 127.0.0.1
+
+!ENTRY com.crt.utils 1 0 2023-09-13 23:44:05.264
+!MESSAGE Connected to 127.0.0.1 on port 2332.
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 10004 2023-09-13 23:46:21.995
+!MESSAGE Failed to execute MI command:
+-data-list-register-values x 25
+Error message from debugger back end:
+Invalid thread id: 1
+!STACK 0
+java.lang.Exception: Invalid thread id: 1
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1013)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:842)
+
+!ENTRY com.nxp.mcuxpresso.core.debug 1 0 2023-09-13 23:47:54.849
+!MESSAGE Telnet session connected on port 2333->60154 @ 127.0.0.1
+
+!ENTRY com.crt.utils 1 0 2023-09-13 23:47:55.101
+!MESSAGE Connected to 127.0.0.1 on port 2332.
+
+!ENTRY org.eclipse.tm.terminal.connector.cdtserial 4 0 2023-09-13 23:48:23.978
+!MESSAGE Error opening \\.\COM4 (5)
+!STACK 0
+java.io.IOException: Error opening \\.\COM4 (5)
+	at org.eclipse.cdt.serial.SerialPort.open0(Native Method)
+	at org.eclipse.cdt.serial.SerialPort.open(SerialPort.java:316)
+	at org.eclipse.tm.terminal.connector.cdtserial.connector.SerialConnector.connect(SerialConnector.java:80)
+	at org.eclipse.tm.internal.terminal.connector.TerminalConnector.connect(TerminalConnector.java:182)
+	at org.eclipse.tm.internal.terminal.emulator.VT100TerminalControl.connectTerminal(VT100TerminalControl.java:420)
+	at org.eclipse.tm.terminal.view.ui.tabs.TabFolderManager.createTabItem(TabFolderManager.java:330)
+	at org.eclipse.tm.terminal.view.ui.manager.ConsoleManager.openConsole(ConsoleManager.java:489)
+	at org.eclipse.tm.terminal.view.ui.services.TerminalService$2.doRun(TerminalService.java:298)
+	at org.eclipse.tm.terminal.view.ui.services.TerminalService$2.lambda$0(TerminalService.java:274)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:185)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4035)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3635)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1154)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1045)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:644)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:551)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:156)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:136)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:659)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:596)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1467)
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 10004 2023-09-13 23:57:12.656
+!MESSAGE Failed to execute MI command:
+-data-list-register-values x 25
+Error message from debugger back end:
+Invalid thread id: 1
+!STACK 0
+java.lang.Exception: Invalid thread id: 1
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1013)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:842)
+!SESSION 2023-09-14 11:55:02.702 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=11.0.11
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_MX
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.core.resources 2 10035 2023-09-14 11:55:13.531
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY com.nxp.mcuxpresso.core.debug 1 0 2023-09-14 19:13:55.942
+!MESSAGE Telnet session connected on port 2333->57623 @ 127.0.0.1
+
+!ENTRY com.crt.utils 1 0 2023-09-14 19:13:56.987
+!MESSAGE Connected to 127.0.0.1 on port 2332.
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 10001 2023-09-14 19:19:49.868
+!MESSAGE Connection is shut down
+
+!ENTRY com.nxp.mcuxpresso.core.debug 1 0 2023-09-14 20:27:57.537
+!MESSAGE Telnet session connected on port 2333->58168 @ 127.0.0.1
+
+!ENTRY com.crt.utils 1 0 2023-09-14 20:27:59.006
+!MESSAGE Connected to 127.0.0.1 on port 2332.
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 10004 2023-09-14 20:30:38.308
+!MESSAGE Failed to execute MI command:
+-data-list-register-values x 25
+Error message from debugger back end:
+Invalid thread id: 1
+!STACK 0
+java.lang.Exception: Invalid thread id: 1
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1013)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:842)
+
+!ENTRY com.nxp.mcuxpresso.core.debug 1 0 2023-09-14 20:31:42.980
+!MESSAGE Telnet session connected on port 2333->58256 @ 127.0.0.1
+
+!ENTRY com.crt.utils 1 0 2023-09-14 20:31:43.759
+!MESSAGE Connected to 127.0.0.1 on port 2332.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2023-09-14 20:34:57.125
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.concurrent.ImmediateRequestMonitor@7bcb57f7): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Suspend operation timeout.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-09-14 20:34:57.125
+!MESSAGE Suspend operation timeout.
+
+!ENTRY com.nxp.mcuxpresso.core.debug 1 0 2023-09-14 20:45:54.330
+!MESSAGE Telnet session connected on port 2333->61100 @ 127.0.0.1
+
+!ENTRY com.crt.utils 1 0 2023-09-14 20:45:55.217
+!MESSAGE Connected to 127.0.0.1 on port 2332.
+
+!ENTRY unknown 8 1 2023-09-15 22:25:45.383
+!MESSAGE 
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2023-09-15 22:25:45.385
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.concurrent.ImmediateRequestMonitor@72e8c3e2): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-exec-interrupt
+Error message from debugger back end:
+Thread id: 1 has terminated java.lang.Exception: Thread id: 1 has terminated' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-09-15 22:25:45.385
+!MESSAGE Failed to execute MI command:
+-exec-interrupt
+Error message from debugger back end:
+Thread id: 1 has terminated
+!STACK 0
+java.lang.Exception: Thread id: 1 has terminated
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1013)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:842)
+!SESSION 2023-09-17 23:09:41.968 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=11.0.11
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_MX
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.core.resources 2 10035 2023-09-17 23:09:49.419
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY com.nxp.mcuxpresso.core.debug 1 0 2023-09-17 23:11:42.139
+!MESSAGE Telnet session connected on port 2333->54098 @ 127.0.0.1
+
+!ENTRY com.crt.utils 1 0 2023-09-17 23:11:42.748
+!MESSAGE Connected to 127.0.0.1 on port 2332.
+
+!ENTRY com.nxp.mcuxpresso.core.debug 1 0 2023-09-17 23:18:19.895
+!MESSAGE Telnet session connected on port 2333->54345 @ 127.0.0.1
+
+!ENTRY com.crt.utils 1 0 2023-09-17 23:18:20.314
+!MESSAGE Connected to 127.0.0.1 on port 2332.
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 10001 2023-09-17 23:20:07.728
+!MESSAGE Connection is shut down
+!SESSION 2023-09-17 23:39:28.372 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=11.0.11
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_MX
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.core.resources 2 10035 2023-09-17 23:39:34.254
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2023-09-17 23:40:48.142
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.concurrent.ImmediateRequestMonitor@5d9312d): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-target-select remote localhost:2331
+
+Error message from debugger back end:
+localhost:2331: Connection timed out. java.lang.Exception: localhost:2331: Connection timed out.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-09-17 23:40:48.143
+!MESSAGE Failed to execute MI command:
+-target-select remote localhost:2331
+
+Error message from debugger back end:
+localhost:2331: Connection timed out.
+!STACK 0
+java.lang.Exception: localhost:2331: Connection timed out.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1013)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:842)
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2023-09-17 23:40:48.344
+!MESSAGE Error in final launch sequence:
+
+Failed to execute MI command:
+-target-select remote localhost:2331
+
+Error message from debugger back end:
+localhost:2331: Connection timed out.
+!STACK 1
+org.eclipse.core.runtime.CoreException: Failed to execute MI command:
+-target-select remote localhost:2331
+
+Error message from debugger back end:
+localhost:2331: Connection timed out.
+	at org.eclipse.cdt.dsf.concurrent.Query.get(Query.java:112)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugSession(GdbLaunchDelegate.java:252)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugger(GdbLaunchDelegate.java:109)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launch(GdbLaunchDelegate.java:97)
+	at com.nxp.mcuxpresso.core.debug.support.segger.launches.JLinkLaunchDelegate.launch(JLinkLaunchDelegate.java:307)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:803)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:716)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1021)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$2.run(DebugUIPlugin.java:1224)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.lang.Exception: localhost:2331: Connection timed out.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1013)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:842)
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-09-17 23:40:48.345
+!MESSAGE Failed to execute MI command:
+-target-select remote localhost:2331
+
+Error message from debugger back end:
+localhost:2331: Connection timed out.
+!STACK 0
+java.lang.Exception: localhost:2331: Connection timed out.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1013)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:842)
+
+!ENTRY com.nxp.mcuxpresso.core.debug 1 0 2023-09-17 23:41:15.399
+!MESSAGE Telnet session connected on port 2333->50471 @ 127.0.0.1
+
+!ENTRY com.crt.utils 1 0 2023-09-17 23:41:15.698
+!MESSAGE Connected to 127.0.0.1 on port 2332.
+
+!ENTRY com.nxp.mcuxpresso.core.debug 1 0 2023-09-17 23:50:44.815
+!MESSAGE Telnet session connected on port 2333->50663 @ 127.0.0.1
+
+!ENTRY com.crt.utils 1 0 2023-09-17 23:50:45.155
+!MESSAGE Connected to 127.0.0.1 on port 2332.
+
+!ENTRY com.nxp.mcuxpresso.core.debug 1 0 2023-09-17 23:54:56.323
+!MESSAGE Telnet session connected on port 2333->50724 @ 127.0.0.1
+
+!ENTRY com.crt.utils 1 0 2023-09-17 23:54:56.547
+!MESSAGE Connected to 127.0.0.1 on port 2332.

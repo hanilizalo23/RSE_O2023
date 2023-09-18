@@ -1,0 +1,196 @@
+!SESSION 2023-09-17 23:17:35.985 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=11.0.11
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_MX
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.nxp.mcuxpresso.core.datamodels 1 0 2023-09-17 23:17:50.989
+!MESSAGE Recreating part support. No part support available.
+
+!ENTRY com.nxp.mcuxpresso.core.datamodels 1 0 2023-09-17 23:17:57.016
+!MESSAGE The device 'MK64FN1M0xxx12' (version='1.0.0') from SDK 'SDK_2.x_FRDM-K64F' (version='2.11.0', build='541 2022-01-14') will be installed.
+
+!ENTRY com.nxp.mcuxpresso.core.datamodels 1 0 2023-09-17 23:17:58.479
+!MESSAGE The device 'MK66FN2M0xxx18' (version='1.0.0') from SDK 'SDK_2.x_FRDM-K66F' (version='2.11.0', build='541 2022-01-14') will be installed.
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 2 0 2023-09-17 23:18:37.026
+!MESSAGE Connection to https://mcuxpresso.nxp.com/eclipse/sdk/2.5.0/p2.index failed on Socket closed. Retry attempt 0 started
+!STACK 0
+javax.net.ssl.SSLException: Socket closed
+	at java.base/sun.security.ssl.Alert.createSSLException(Unknown Source)
+	at java.base/sun.security.ssl.TransportContext.fatal(Unknown Source)
+	at java.base/sun.security.ssl.TransportContext.fatal(Unknown Source)
+	at java.base/sun.security.ssl.TransportContext.fatal(Unknown Source)
+	at java.base/sun.security.ssl.SSLSocketImpl.handleException(Unknown Source)
+	at java.base/sun.security.ssl.SSLSocketImpl$AppInputStream.read(Unknown Source)
+	at org.apache.http.impl.conn.LoggingInputStream.read(LoggingInputStream.java:84)
+	at org.apache.http.impl.io.SessionInputBufferImpl.streamRead(SessionInputBufferImpl.java:137)
+	at org.apache.http.impl.io.SessionInputBufferImpl.fillBuffer(SessionInputBufferImpl.java:153)
+	at org.apache.http.impl.io.SessionInputBufferImpl.readLine(SessionInputBufferImpl.java:280)
+	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:138)
+	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:56)
+	at org.apache.http.impl.io.AbstractMessageParser.parse(AbstractMessageParser.java:259)
+	at org.apache.http.impl.DefaultBHttpClientConnection.receiveResponseHeader(DefaultBHttpClientConnection.java:163)
+	at org.apache.http.impl.conn.CPoolProxy.receiveResponseHeader(CPoolProxy.java:157)
+	at org.apache.http.protocol.HttpRequestExecutor.doReceiveResponse(HttpRequestExecutor.java:273)
+	at org.apache.http.protocol.HttpRequestExecutor.execute(HttpRequestExecutor.java:125)
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:272)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:186)
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:89)
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:185)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:83)
+	at org.eclipse.ecf.provider.filetransfer.httpclient45.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1003)
+	at org.eclipse.ecf.provider.filetransfer.httpclient45.HttpClientRetrieveFileTransfer.access$0(HttpClientRetrieveFileTransfer.java:995)
+	at org.eclipse.ecf.provider.filetransfer.httpclient45.HttpClientRetrieveFileTransfer$1.performFileTransfer(HttpClientRetrieveFileTransfer.java:991)
+	at org.eclipse.ecf.filetransfer.FileTransferJob.run(FileTransferJob.java:76)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.net.SocketException: Socket closed
+	at java.base/java.net.SocketInputStream.socketRead0(Native Method)
+	at java.base/java.net.SocketInputStream.socketRead(Unknown Source)
+	at java.base/java.net.SocketInputStream.read(Unknown Source)
+	at java.base/java.net.SocketInputStream.read(Unknown Source)
+	at java.base/sun.security.ssl.SSLSocketInputRecord.read(Unknown Source)
+	at java.base/sun.security.ssl.SSLSocketInputRecord.readHeader(Unknown Source)
+	at java.base/sun.security.ssl.SSLSocketInputRecord.bytesInCompletePacket(Unknown Source)
+	at java.base/sun.security.ssl.SSLSocketImpl.readApplicationRecord(Unknown Source)
+	... 23 more
+
+!ENTRY com.crt.log 4 -1 2023-09-17 23:18:37.229
+!MESSAGE Attempt to access stopped agent: org.eclipse.equinox.internal.p2.core.ProvisioningAgent@330a0c61
+!STACK 0
+java.lang.Exception: java.lang.IllegalStateException: Attempt to access stopped agent: org.eclipse.equinox.internal.p2.core.ProvisioningAgent@330a0c61
+	at com.crt.utils.general.Reporter.log(Reporter.java:591)
+	at com.nxp.mcuxpresso.core.datamodels.ui.jobs.RefreshSDKRepoJob.run(RefreshSDKRepoJob.java:265)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.lang.IllegalStateException: Attempt to access stopped agent: org.eclipse.equinox.internal.p2.core.ProvisioningAgent@330a0c61
+	at org.eclipse.equinox.internal.p2.core.ProvisioningAgent.checkRunning(ProvisioningAgent.java:86)
+	at org.eclipse.equinox.internal.p2.core.ProvisioningAgent.getService(ProvisioningAgent.java:50)
+	at org.eclipse.equinox.p2.core.IProvisioningAgent.getService(IProvisioningAgent.java:86)
+	at org.eclipse.equinox.internal.p2.artifact.repository.ArtifactRepositoryManager.restoreSpecialRepositories(ArtifactRepositoryManager.java:151)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.restoreRepositories(AbstractRepositoryManager.java:1032)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.addRepository(AbstractRepositoryManager.java:166)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.basicRefreshRepository(AbstractRepositoryManager.java:217)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.basicRefreshRepository(AbstractRepositoryManager.java:210)
+	at org.eclipse.equinox.internal.p2.artifact.repository.ArtifactRepositoryManager.refreshRepository(ArtifactRepositoryManager.java:136)
+	at com.nxp.mcuxpresso.core.datamodels.ui.jobs.RefreshSDKRepoJob.run(RefreshSDKRepoJob.java:168)
+	... 1 more
+!SESSION 2023-09-17 23:20:07.719 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=11.0.11
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_MX
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.cdt.core 1 0 2023-09-17 23:21:18.839
+!MESSAGE Indexed 'frdmk64f_lwip_tcpecho_freertos' (0 sources, 0 headers) in 0.003 sec: 0 declarations; 0 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0 %)
+
+!ENTRY com.crt.log 1 0 2023-09-17 23:23:20.436
+!MESSAGE Trying to connect to redlink server on port 3025.
+
+!ENTRY com.nxp.mcuxpresso.core.debug.support.linkserver 1 0 2023-09-17 23:23:20.440
+!MESSAGE RedlinkServer telnet session connected on port 3025->54551 @ 127.0.0.1
+
+!ENTRY com.nxp.mcuxpresso.core.debug.support.linkserver 4 0 2023-09-17 23:23:23.237
+!MESSAGE Unable to parse ProbeList output to get probe ref count: []
+
+!ENTRY com.nxp.mcuxpresso.core.debug 1 0 2023-09-17 23:23:35.000
+!MESSAGE Telnet session connected on port 2333->54575 @ 127.0.0.1
+
+!ENTRY com.crt.utils 1 0 2023-09-17 23:23:35.528
+!MESSAGE Connected to 127.0.0.1 on port 2332.
+!SESSION 2023-09-17 23:37:43.454 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=11.0.11
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_MX
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.core.resources 2 10035 2023-09-17 23:37:52.445
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY com.nxp.mcuxpresso.core.debug 1 0 2023-09-17 23:42:24.973
+!MESSAGE Telnet session connected on port 2333->50536 @ 127.0.0.1
+
+!ENTRY com.crt.utils 1 0 2023-09-17 23:42:25.350
+!MESSAGE Connected to 127.0.0.1 on port 2332.
+
+!ENTRY com.nxp.mcuxpresso.core.debug 1 0 2023-09-17 23:44:51.762
+!MESSAGE Telnet session connected on port 2333->50557 @ 127.0.0.1
+
+!ENTRY com.crt.utils 1 0 2023-09-17 23:44:52.086
+!MESSAGE Connected to 127.0.0.1 on port 2332.
+
+!ENTRY org.eclipse.core.jobs 4 2 2023-09-17 23:49:24.811
+!MESSAGE An internal error occurred during: "Suspend monitor job.".
+!STACK 0
+java.util.concurrent.RejectedExecutionException: Task java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask@18447dee[Not completed, task = java.util.concurrent.Executors$RunnableAdapter@3f3a2805[Wrapped task = org.eclipse.cdt.dsf.gdb.service.GDBRunControl_7_12$MonitorSuspendJob$2@160d7d09]] rejected from org.eclipse.cdt.dsf.concurrent.DefaultDsfExecutor@6432ba26[Terminated, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 3924]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$AbortPolicy.rejectedExecution(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.reject(Unknown Source)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor.delayedExecute(Unknown Source)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor.schedule(Unknown Source)
+	at org.eclipse.cdt.dsf.concurrent.DefaultDsfExecutor.schedule(DefaultDsfExecutor.java:450)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor.submit(Unknown Source)
+	at org.eclipse.cdt.dsf.concurrent.DefaultDsfExecutor.submit(DefaultDsfExecutor.java:482)
+	at org.eclipse.cdt.dsf.gdb.service.GDBRunControl_7_12$MonitorSuspendJob.run(GDBRunControl_7_12.java:358)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2023-09-17 23:49:36.785
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.concurrent.ImmediateRequestMonitor@5257d38d): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-target-select remote localhost:2331
+
+Error message from debugger back end:
+Remote communication error.  Target disconnected.: (undocumented errno 10061). java.lang.Exception: Remote communication error.  Target disconnected.: (undocumented errno 10061).' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-09-17 23:49:36.785
+!MESSAGE Failed to execute MI command:
+-target-select remote localhost:2331
+
+Error message from debugger back end:
+Remote communication error.  Target disconnected.: (undocumented errno 10061).
+!STACK 0
+java.lang.Exception: Remote communication error.  Target disconnected.: (undocumented errno 10061).
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1013)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:842)
+
+!ENTRY com.nxp.mcuxpresso.core.debug 1 0 2023-09-17 23:50:01.281
+!MESSAGE Telnet session connected on port 2333->50641 @ 127.0.0.1
+
+!ENTRY com.crt.utils 1 0 2023-09-17 23:50:01.629
+!MESSAGE Connected to 127.0.0.1 on port 2332.
+
+!ENTRY com.nxp.mcuxpresso.core.debug 1 0 2023-09-17 23:54:09.122
+!MESSAGE Telnet session connected on port 2333->50710 @ 127.0.0.1
+
+!ENTRY com.crt.utils 1 0 2023-09-17 23:54:09.391
+!MESSAGE Connected to 127.0.0.1 on port 2332.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2023-09-17 23:54:29.995
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.mi.service.MIMemory$4@13751b93): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-data-evaluate-expression &(INIT_THREAD_STACKSIZE)
+Error message from debugger back end:
+No symbol "INIT_THREAD_STACKSIZE" in current context. java.lang.Exception: No symbol "INIT_THREAD_STACKSIZE" in current context.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-09-17 23:54:29.995
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression &(INIT_THREAD_STACKSIZE)
+Error message from debugger back end:
+No symbol "INIT_THREAD_STACKSIZE" in current context.
+!STACK 0
+java.lang.Exception: No symbol "INIT_THREAD_STACKSIZE" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1013)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:842)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2023-09-17 23:54:29.996
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.mi.service.MIMemory$4@6bbc3198): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-data-evaluate-expression &(SYSMPU_CESR_VLD_MASK)
+Error message from debugger back end:
+Attempt to take address of value not located in memory. java.lang.Exception: Attempt to take address of value not located in memory.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-09-17 23:54:29.996
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression &(SYSMPU_CESR_VLD_MASK)
+Error message from debugger back end:
+Attempt to take address of value not located in memory.
+!STACK 0
+java.lang.Exception: Attempt to take address of value not located in memory.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1013)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:842)
