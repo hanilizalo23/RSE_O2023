@@ -33,7 +33,7 @@
 #include "GPIO.h"
 #include "NVIC.h"
 #include "PIT.h"
-#include "ADC.h"
+#include "DAC.h"
 /*******************************************************************************
  * Definitions
  ******************************************************************************/
@@ -51,7 +51,7 @@
 #define configIP_ADDR2 0
 #endif
 #ifndef configIP_ADDR3
-#define configIP_ADDR3 102
+#define configIP_ADDR3 101
 #endif
 
 /* Netmask configuration. */
@@ -79,7 +79,7 @@
 #define configGW_ADDR2 0
 #endif
 #ifndef configGW_ADDR3
-#define configGW_ADDR3 101
+#define configGW_ADDR3 103
 #endif
 
 /* MAC address configuration. */
@@ -188,14 +188,23 @@ int main(void)
     BOARD_InitBootClocks();
     BOARD_InitDebugConsole();
 
+    PIT_clock_gating();
+	   uint32_t clock = CLOCK_GetFreq(kCLOCK_BusClk);
+	PIT_enable();
+	PIT_enable_interrupt(PIT_0);
+	NVIC_enable_interrupt_and_priotity(PIT_CH0_IRQ, PRIORITY_5);
+	NVIC_enable_interrupt_and_priotity(PIT_CH0_IRQ, PRIORITY_4);
 
-	initADC();
+	NVIC_global_enable_interrupts;
+	//PIT_delay(PIT_0, SYSTEM_CLOCK, SAMPLING_FREQUENCY);
+	PIT_SetTimerPeriod(DEMO_PIT_BASEADDR, PIT_0, USEC_TO_COUNT(43U,SYSTEM_CLOCK));
 
+	initDAC();
     /* Disable SYSMPU. */
     base->CESR &= ~SYSMPU_CESR_VLD_MASK;
 
     /* Initialize lwIP from thread */
-    if (sys_thread_new("main", stack_init, NULL, 512, INIT_THREAD_PRIO) == NULL)
+    if (sys_thread_new("main", stack_init, NULL, 256, INIT_THREAD_PRIO) == NULL)
     {
         LWIP_ASSERT("main(): Task creation failed.", 0);
     }
