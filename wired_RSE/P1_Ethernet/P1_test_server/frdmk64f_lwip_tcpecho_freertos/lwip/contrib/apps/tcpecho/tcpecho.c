@@ -37,13 +37,28 @@
 
 #include "lwip/sys.h"
 #include "lwip/api.h"
+#include "fsl_pit.h"
+#include "PIT.h"
+#include "ADC.h"
+#include "Bits.h"
+#include "NVIC.h"
+
+#define SYSTEM_CLOCK CLOCK_GetFreq(kCLOCK_BusClk)
 /*-----------------------------------------------------------------------------------*/
 static void
 tcpecho_thread(void *arg)
 {
   struct netconn *conn, *newconn;
   err_t err;
+  uint8_t pit_flag = FALSE, i = 0;
+  uint16_t adc_value = 0;
+  uint16_t Data[100] = {0};
+  struct netbuf *buf;
+  void *data;
+  u16_t len;
   LWIP_UNUSED_ARG(arg);
+
+
 
   /* Create a new connection identifier. */
   /* Bind connection to well known port number 7. */
@@ -57,45 +72,38 @@ tcpecho_thread(void *arg)
   LWIP_ERROR("tcpecho: invalid conn", (conn != NULL), return;);
   PRINTF("\n%s\n", "HOLA SOY EL SERVER" );
   /* Tell connection to go into listening mode. */
-  netconn_listen(conn);
 
+  PIT_StartTimer(DEMO_PIT_BASEADDR, kPIT_Chnl_0);
+  netconn_listen(conn);
+  err = netconn_accept(conn, &newconn);
+  if (err == ERR_OK) {
 
   while (1) {
 
-    /* Grab new connection. */
-    err = netconn_accept(conn, &newconn);
-    /*printf("accepted new connection %p\n", newconn);*/
-    /* Process the new connection. */
-    if (err == ERR_OK) {
-      struct netbuf *buf;
-      void *data;
-      u16_t len;
+	pit_flag = PIT_get_irq_status(kPIT_Chnl_0);
+	if(pit_flag)
+	{
+		adc_value = ADC0_read();
+		PIT_clear_irq_status(kPIT_Chnl_0);
 
-     netconn_recv(newconn, &buf);
-        /*printf("Recved\n");*/
-      netbuf_data(buf, &data, &len);
-      PRINTF("\n%s\n",data );
-      netconn_recv(newconn, &buf);
-         /*printf("Recved\n");*/
-       netbuf_data(buf, &data, &len);
-       PRINTF("\n%s\n",data );
+		/* Grab new connection. */
 
-    	  uint8_t Data[]="hello CLIENT\r";
-    	  err=netconn_write(newconn, Data, 21, 0x01);
-    	  vTaskDelay(300);
-    	  err=netconn_write(newconn, Data, 21, 0x01);
-    	  vTaskDelay(300);
+			  Data[0]=adc_value;
+			  err=netconn_write(newconn, Data, 2, 0x01);
 
-      netconn_close(newconn);
-      PRINTF("\n%s\n", "close" );
-    }
+			  vTaskDelay(300);
+
+	}
+  }
+  netconn_close(newconn);
+  netconn_delete(newconn);
   }
 }
 /*-----------------------------------------------------------------------------------*/
 void
 tcpecho_init(void)
 {
-  sys_thread_new("tcpecho_thread", tcpecho_thread, NULL, DEFAULT_THREAD_STACKSIZE, DEFAULT_THREAD_PRIO);
+  sys_thread_new("tcpecho_thread", tcpecho_thread, NULL, 512, 1);
 }
 /*-----------------------------------------------------------------------------------*/
 
