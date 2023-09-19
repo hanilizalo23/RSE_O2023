@@ -1,0 +1,113 @@
+/*
+ * Copyright 2016-2022 NXP
+ * All rights reserved.
+ *
+ * @file    PIT.c
+ * @brief   Application entry point.
+ *
+ * 	\author Axel Ramirez Herrera, ie727589@iteso.mx
+	\author Oliver Rodea Aragon,  ie727549@iteso.mx
+	\date	17/09/2018
+ */
+#include <stdio.h>
+#include "MK64F12.h"
+#include "PIT.h"
+#include "GPIO.h"
+
+
+static void (*pit_0_callback)(void) = 0;
+volatile static pit_interrupt_flags_t g_intr_status_flag = { FALSE };
+/*
+ * This function sets the time that PIT will count to send an interrupt
+ * The time is calculated with the system clock 21MHz and the time in seconds (delay)
+ * Notice that PIT clock is 10.5 MHz*/
+void PIT_delay(PIT_timer_t pit_timer, My_float_pit_t system_clock , My_float_pit_t delay){
+
+	My_float_pit_t PIT_register_value = (delay*(system_clock/2.0f));
+	PIT->CHANNEL[pit_timer].LDVAL = (uint32_t)PIT_register_value;
+	//PIT_enable_interrupt(pit_timer);
+	PIT->CHANNEL[pit_timer].TCTRL |= PIT_TCTRL_TEN(1);
+}
+/*
+ * This function set on the clock of PIT*/
+void PIT_clock_gating(void){
+	SIM->SCGC6 |= SIM_SCGC6_PIT_MASK;
+}
+
+/*
+ *This function ISR sets a flag to let know when the interruption show up
+ *the last instruction reads control register for clear PIT flag, this is silicon bug*/
+void PIT0_IRQHandler(void)
+{
+	g_intr_status_flag.flag_pit_0 = TRUE;
+	uint32_t irq_status = false;
+	irq_status = PIT_GetStatusFlags(DEMO_PIT_BASEADDR, kPIT_Chnl_0);
+	PIT_ClearStatusFlags(DEMO_PIT_BASEADDR,kPIT_Chnl_0,  irq_status);
+	uint32_t dummyRead = PIT->CHANNEL[0].TCTRL;
+	__DSB(); //Used to enter the interrupt
+}
+
+void PIT_clear_irq_status(pit_chnl_t chnl) {
+	switch (chnl) {
+		case (kPIT_Chnl_0):
+			g_intr_status_flag.flag_pit_0 = FALSE;
+		break;
+		case (kPIT_Chnl_1):
+			g_intr_status_flag.flag_pit_1 = FALSE;
+		break;
+		case (kPIT_Chnl_2):
+			g_intr_status_flag.flag_pit_2 = FALSE;
+		break;
+		default:
+			g_intr_status_flag.flag_pit_3 = FALSE;
+		break;
+	}
+}
+
+/**Get the interrupt status of the pits.*/
+uint8_t PIT_get_irq_status(pit_chnl_t chnl) {
+
+	uint8_t status = false;
+
+	switch (chnl) {
+		case (kPIT_Chnl_0):
+			status = g_intr_status_flag.flag_pit_0;
+		break;
+		case (kPIT_Chnl_1):
+			status = g_intr_status_flag.flag_pit_1;
+		break;
+		case (kPIT_Chnl_2):
+			status = g_intr_status_flag.flag_pit_2;
+		break;
+		default:
+			status = g_intr_status_flag.flag_pit_3;
+		break;
+	}
+	return (status);
+}
+/*
+ * This function enables the interruption of the PIT*/
+void PIT_enable_interrupt(PIT_timer_t pit){
+
+	PIT->CHANNEL[pit].TCTRL |= PIT_TCTRL_TIE_MASK;
+
+}
+/*This function enables the PIT Module*/
+void PIT_enable(void){
+	PIT->MCR = 0;
+}
+
+void PIT_callback_init(PIT_timer_t pit,void (*handler)(void))
+{
+	if(PIT_0 == pit)
+	{
+		pit_0_callback = handler;
+	}
+}
+
+void PIT_reset(PIT_timer_t pit)
+{
+	PIT->CHANNEL[pit].TCTRL &= ~PIT_TCTRL_TEN(1);
+
+	PIT->CHANNEL[pit].TCTRL |= PIT_TCTRL_TEN(1);
+}
