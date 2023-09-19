@@ -28,6 +28,12 @@
 #include "fsl_phyksz8081.h"
 #include "fsl_enet_mdio.h"
 #include "fsl_device_registers.h"
+
+#include "fsl_pit.h"
+#include "GPIO.h"
+#include "NVIC.h"
+#include "PIT.h"
+#include "ADC.h"
 /*******************************************************************************
  * Definitions
  ******************************************************************************/
@@ -45,7 +51,7 @@
 #define configIP_ADDR2 0
 #endif
 #ifndef configIP_ADDR3
-#define configIP_ADDR3 101
+#define configIP_ADDR3 102
 #endif
 
 /* Netmask configuration. */
@@ -73,7 +79,7 @@
 #define configGW_ADDR2 0
 #endif
 #ifndef configGW_ADDR3
-#define configGW_ADDR3 103
+#define configGW_ADDR3 101
 #endif
 
 /* MAC address configuration. */
@@ -106,6 +112,11 @@
 
 /*! @brief Priority of the temporary lwIP initialization thread. */
 #define INIT_THREAD_PRIO DEFAULT_THREAD_PRIO
+
+#define SYSTEM_CLOCK CLOCK_GetFreq(kCLOCK_BusClk)
+#define DELAY_SWITCH 1000
+#define SAMPLING_FREQUENCY (1.0f/22050)
+#define SIZE_ARRAY 7
 
 /*******************************************************************************
  * Prototypes
@@ -176,11 +187,15 @@ int main(void)
     BOARD_InitBootPins();
     BOARD_InitBootClocks();
     BOARD_InitDebugConsole();
+
+
+	initADC();
+
     /* Disable SYSMPU. */
     base->CESR &= ~SYSMPU_CESR_VLD_MASK;
 
     /* Initialize lwIP from thread */
-    if (sys_thread_new("main", stack_init, NULL, INIT_THREAD_STACKSIZE, INIT_THREAD_PRIO) == NULL)
+    if (sys_thread_new("main", stack_init, NULL, 512, INIT_THREAD_PRIO) == NULL)
     {
         LWIP_ASSERT("main(): Task creation failed.", 0);
     }
