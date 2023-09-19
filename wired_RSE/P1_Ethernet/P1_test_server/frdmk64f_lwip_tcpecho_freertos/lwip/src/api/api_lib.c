@@ -1011,11 +1011,11 @@ netconn_write_vectors_partly(struct netconn *conn, struct netvector *vectors, u1
     dontblock = 1;
   }
 #endif /* LWIP_SO_SNDTIMEO */
-  if (dontblock && !bytes_written) {
+  //if (dontblock && !bytes_written) {
     /* This implies netconn_write() cannot be used for non-blocking send, since
        it has no way to return the number of bytes written. */
-    return ERR_VAL;
-  }
+    //return ERR_VAL;
+  //}
 
   /* sum up the total size */
   size = 0;
