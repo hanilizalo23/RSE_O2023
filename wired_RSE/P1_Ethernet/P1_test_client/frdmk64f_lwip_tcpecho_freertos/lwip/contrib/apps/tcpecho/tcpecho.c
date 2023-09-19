@@ -37,6 +37,7 @@
 
 #include "lwip/sys.h"
 #include "lwip/api.h"
+#include "DAC.h"
 /*-----------------------------------------------------------------------------------*/
 static void
 tcpecho_thread(void *arg)
@@ -44,6 +45,13 @@ tcpecho_thread(void *arg)
   struct netconn *conn, *newconn;
   err_t err;
   LWIP_UNUSED_ARG(arg);
+  uint32_t outputval = 0;
+  uint32_t * output_ptr = NULL;
+  uint32_t * output_ptr2 = NULL;
+  struct netbuf *buf;
+  void *data;
+  void *data2;
+  u16_t len;
 //snewe ashdbahsdghags
   /* Create a new connection identifier. */
   /* Bind connection to well known port number 7. */
@@ -59,40 +67,37 @@ tcpecho_thread(void *arg)
   IP4_ADDR(&ipaddrServer, 192,168,0,102);//ip del server
   uint8_t Data[]="hello SERVER\r";
   PRINTF("\n%s\n", "HOLA SOY EL CLIENT" );
-  while(1){
-	  err = netconn_connect(conn, &ipaddrServer,7);
+  err = netconn_connect(conn, &ipaddrServer,7);
   if (err == ERR_OK) {
+  while(1){
+
+			 netconn_recv(conn, &buf);
+			 vTaskDelay(300);
+
+			  netbuf_data(buf, &data, &len);
+			  outputval = (uint32_t) data;
+
+			  netbuf_delete(buf);
+			  vTaskDelay(300);
 
 
-	  err=netconn_write(conn, Data, 21, 0);
-	  vTaskDelay(300);
-	  err=netconn_write(conn, Data, 21, 0);
-	  vTaskDelay(300);
+			   outputval = (uint32_t) data;
+			   output_ptr = outputval;
 
-      struct netbuf *buf;
-      void *data;
-      void *data2;
-      u16_t len;
-	     netconn_recv(conn, &buf);
-	        /*printf("Recved\n");*/
-	      netbuf_data(buf, &data, &len);
-	      PRINTF("\n%s\r",data );
-	      vTaskDelay(300);
-	      netconn_recv(conn, &buf);
-	         /*printf("Recved\n");*/
-	       netbuf_data(buf, &data2, &len);
-	       PRINTF("\n%s\r",data );
 
+
+			    DAC0->DAT[0].DATL = (*output_ptr) & 0xFF;
+			    DAC0->DAT[0].DATH = ((*output_ptr) >> 8) & 0x0F;
+
+  }
   netconn_close(conn);
-  PRINTF("\n%s\n", "close" );
-
-  }}
+  }
 }
 /*-----------------------------------------------------------------------------------*/
 void
 tcpecho_init(void)
 {
-  sys_thread_new("tcpecho_thread", tcpecho_thread, NULL, DEFAULT_THREAD_STACKSIZE, DEFAULT_THREAD_PRIO);
+  sys_thread_new("tcpecho_thread", tcpecho_thread, NULL, 512, 1);
 }
 /*-----------------------------------------------------------------------------------*/
 
