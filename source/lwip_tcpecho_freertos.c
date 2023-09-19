@@ -204,7 +204,7 @@ int main(void)
     base->CESR &= ~SYSMPU_CESR_VLD_MASK;
 
     /* Initialize lwIP from thread */
-    if (sys_thread_new("main", stack_init, NULL, INIT_THREAD_STACKSIZE, INIT_THREAD_PRIO) == NULL)
+    if (sys_thread_new("main", stack_init, NULL, 256, INIT_THREAD_PRIO) == NULL)
     {
         LWIP_ASSERT("main(): Task creation failed.", 0);
     }
