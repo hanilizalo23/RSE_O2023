@@ -5,8 +5,6 @@
  * @file    PIT.c
  * @brief   Application entry point.
  *
- * 	\author Axel Ramirez Herrera, ie727589@iteso.mx
-	\author Oliver Rodea Aragon,  ie727549@iteso.mx
 	\date	17/09/2018
  */
 #include <stdio.h>
@@ -43,7 +41,7 @@ void PIT0_IRQHandler(void)
 	uint32_t irq_status = false;
 	irq_status = PIT_GetStatusFlags(DEMO_PIT_BASEADDR, kPIT_Chnl_0);
 	PIT_ClearStatusFlags(DEMO_PIT_BASEADDR,kPIT_Chnl_0,  irq_status);
-	uint32_t dummyRead = PIT->CHANNEL[0].TCTRL;
+
 	__DSB(); //Used to enter the interrupt
 }
 

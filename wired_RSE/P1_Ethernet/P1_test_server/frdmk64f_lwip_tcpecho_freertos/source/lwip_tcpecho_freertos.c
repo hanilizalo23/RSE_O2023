@@ -197,8 +197,9 @@ int main(void)
 
     	NVIC_global_enable_interrupts;
     	//PIT_delay(PIT_0, SYSTEM_CLOCK, SAMPLING_FREQUENCY);
-    	PIT_SetTimerPeriod(DEMO_PIT_BASEADDR, PIT_0, USEC_TO_COUNT(43U,SYSTEM_CLOCK));
+    	PIT_SetTimerPeriod(DEMO_PIT_BASEADDR, PIT_0, USEC_TO_COUNT(40U,SYSTEM_CLOCK));
 	initADC();
+	GPIO_configure_switches();
 
     /* Disable SYSMPU. */
     base->CESR &= ~SYSMPU_CESR_VLD_MASK;
