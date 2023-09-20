@@ -5,9 +5,6 @@
  * @file    PIT.c
  * @brief   Application entry point.
  *
- * 	\author Axel Ramirez Herrera, ie727589@iteso.mx
-	\author Oliver Rodea Aragon,  ie727549@iteso.mx
-	\date	17/09/2018
  */
 #include <stdio.h>
 #include "MK64F12.h"
@@ -16,6 +13,7 @@
 
 
 static void (*pit_0_callback)(void) = 0;
+//static void (*pit_0_callback)(uint32_t flags) = FALSE;
 volatile static pit_interrupt_flags_t g_intr_status_flag = { FALSE };
 /*
  * This function sets the time that PIT will count to send an interrupt
@@ -39,12 +37,15 @@ void PIT_clock_gating(void){
  *the last instruction reads control register for clear PIT flag, this is silicon bug*/
 void PIT0_IRQHandler(void)
 {
-	g_intr_status_flag.flag_pit_0 = TRUE;
 	uint32_t irq_status = false;
 	irq_status = PIT_GetStatusFlags(DEMO_PIT_BASEADDR, kPIT_Chnl_0);
-	PIT_ClearStatusFlags(DEMO_PIT_BASEADDR,kPIT_Chnl_0,  irq_status);
-	uint32_t dummyRead = PIT->CHANNEL[0].TCTRL;
-	__DSB(); //Used to enter the interrupt
+
+	if(pit_0_callback)
+	{
+		pit_0_callback();
+	}
+	PIT_ClearStatusFlags(DEMO_PIT_BASEADDR,kPIT_Chnl_0, irq_status);
+	__DSB(); //Used to enter the interrupt
 }
 
 void PIT_clear_irq_status(pit_chnl_t chnl) {
@@ -110,4 +111,12 @@ void PIT_reset(PIT_timer_t pit)
 	PIT->CHANNEL[pit].TCTRL &= ~PIT_TCTRL_TEN(1);
 
 	PIT->CHANNEL[pit].TCTRL |= PIT_TCTRL_TEN(1);
+}
+
+void PIT_callback_deinit(PIT_timer_t pit)
+{
+	if(PIT_0 == pit)
+	{
+		pit_0_callback = NULL;
+	}
 }

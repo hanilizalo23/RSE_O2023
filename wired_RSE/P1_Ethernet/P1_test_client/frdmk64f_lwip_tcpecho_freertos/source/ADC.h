@@ -2,7 +2,6 @@
  * ADC_example.h
  *
  *  Created on: Mar 1, 2022
- *      Author: Oliver Rodea
  */
 
 #ifndef ADC_H_

@@ -1,9 +1,6 @@
 /*
  * PIT.h
  *
- *  Created on: February 23, 2022
- *      \Author: Axel Ramirez Herrera, ie727589@iteso.mx
- *      \Author: Oliver Rodea Aragon,  ie727549@iteso.mx
  */
 
 #ifndef PIT_H_
@@ -109,6 +106,7 @@ void PIT_enable_interrupt(PIT_timer_t pit);
  	 \return void
  */
 void PIT_callback_init(PIT_timer_t pit,void (*handler)(void));
+void PIT_callback_deinit(PIT_timer_t pit);
 
 void PIT_reset(PIT_timer_t pit);
 #endif /* PIT_H_ */

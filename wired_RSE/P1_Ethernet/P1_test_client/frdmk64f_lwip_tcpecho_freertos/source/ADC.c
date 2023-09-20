@@ -2,7 +2,6 @@
  * ADC_example.c
  *
  *  Created on: Mar 1, 2022
- *      Author: Oliver Rodea
  */
 #include <ADC.h>
 #include "MK64F12.h"

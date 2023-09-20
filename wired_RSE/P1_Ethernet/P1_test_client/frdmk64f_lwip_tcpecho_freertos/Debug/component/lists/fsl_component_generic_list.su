@@ -1,5 +1,5 @@
-D:\nxp\RSE\P1_test_client\frdmk64f_lwip_tcpecho_freertos\drivers/fsl_common_arm.h:579:24:DisableGlobalIRQ	16	static
-D:\nxp\RSE\P1_test_client\frdmk64f_lwip_tcpecho_freertos\drivers/fsl_common_arm.h:606:20:EnableGlobalIRQ	24	static
+D:\nxp\RSE\RSE_Practices_N_S\wired_RSE\P1_Ethernet\P1_test_client\frdmk64f_lwip_tcpecho_freertos\drivers/fsl_common_arm.h:579:24:DisableGlobalIRQ	16	static
+D:\nxp\RSE\RSE_Practices_N_S\wired_RSE\P1_Ethernet\P1_test_client\frdmk64f_lwip_tcpecho_freertos\drivers/fsl_common_arm.h:606:20:EnableGlobalIRQ	24	static
 ../component/lists/fsl_component_generic_list.c:32:22:LIST_Error_Check	24	static
 ../component/lists/fsl_component_generic_list.c:80:6:LIST_Init	16	static
 ../component/lists/fsl_component_generic_list.c:103:15:LIST_GetList	16	static

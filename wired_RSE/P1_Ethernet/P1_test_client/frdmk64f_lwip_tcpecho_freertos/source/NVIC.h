@@ -2,9 +2,6 @@
 	\file NVIC.h
 	\brief
 		This is the header file for NVIC functions.
-	\authors Axel Ramirez Herrera, ie727589@iteso.mx
-	\		 Oliver Rodea Aragon,  ie727549@iteso.mx
-	\date	23/02/2022
 	\todo
 	    Interrupts are not implemented in this API implementation.
  */

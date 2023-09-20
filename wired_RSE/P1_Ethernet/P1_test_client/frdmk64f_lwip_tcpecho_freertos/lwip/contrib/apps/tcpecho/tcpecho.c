@@ -85,9 +85,7 @@ tcpecho_thread(void *arg)
 			   output_ptr = outputval;
 
 
-
-			    DAC0->DAT[0].DATL = (*output_ptr) & 0xFF;
-			    DAC0->DAT[0].DATH = ((*output_ptr) >> 8) & 0x0F;
+			   DacSend(*output_ptr);
 
   }
   netconn_close(conn);

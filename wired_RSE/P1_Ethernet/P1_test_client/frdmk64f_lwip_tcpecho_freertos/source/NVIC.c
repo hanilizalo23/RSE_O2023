@@ -4,9 +4,6 @@
 		This is the source file for the NVIC device driver for Kinetis K64.
 		It contains some configuration functions and runtime functions.
 		It is implemented using  CMSIS Core functions
-	\author Axel Ramirez Herrera, ie727589@iteso.mx
-	\       Oliver Rodea Aragon,  ie727549@iteso.mx
-	\date	27/07/2015
 	\todo
 	    Pending interrupts and disable interrupts are not enable.
  */

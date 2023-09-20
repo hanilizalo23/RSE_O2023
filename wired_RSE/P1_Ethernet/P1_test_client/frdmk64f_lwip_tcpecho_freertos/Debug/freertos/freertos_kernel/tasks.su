@@ -50,8 +50,6 @@
 ../freertos/freertos_kernel/tasks.c:4063:16:xTaskPriorityInherit	24	static
 ../freertos/freertos_kernel/tasks.c:4153:16:xTaskPriorityDisinherit	32	static
 ../freertos/freertos_kernel/tasks.c:4233:10:vTaskPriorityDisinheritAfterTimeout	40	static
-../freertos/freertos_kernel/tasks.c:4402:19:prvWriteNameToBuffer	24	static
-../freertos/freertos_kernel/tasks.c:4429:10:vTaskList	48	static
 ../freertos/freertos_kernel/tasks.c:4658:12:uxTaskResetEventItemValue	16	static
 ../freertos/freertos_kernel/tasks.c:4674:18:pvTaskIncrementMutexHeldCount	4	static
 ../freertos/freertos_kernel/tasks.c:4691:14:ulTaskGenericNotifyTake	32	static
