@@ -1,7 +1,7 @@
-D:\nxp\RSE\P1_test_client\frdmk64f_lwip_tcpecho_freertos\CMSIS/core_cm4.h:1809:22:__NVIC_SetPriority	16	static
-D:\nxp\RSE\P1_test_client\frdmk64f_lwip_tcpecho_freertos\drivers/fsl_enet.h:1187:20:ENET_ActiveRead	16	static
-D:\nxp\RSE\P1_test_client\frdmk64f_lwip_tcpecho_freertos\drivers/fsl_enet.h:1260:20:ENET_EnableInterrupts	16	static
-D:\nxp\RSE\P1_test_client\frdmk64f_lwip_tcpecho_freertos\drivers/fsl_enet.h:1279:20:ENET_DisableInterrupts	16	static
+D:\nxp\RSE\RSE_Practices_N_S\wired_RSE\P1_Ethernet\P1_test_client\frdmk64f_lwip_tcpecho_freertos\CMSIS/core_cm4.h:1809:22:__NVIC_SetPriority	16	static
+D:\nxp\RSE\RSE_Practices_N_S\wired_RSE\P1_Ethernet\P1_test_client\frdmk64f_lwip_tcpecho_freertos\drivers/fsl_enet.h:1187:20:ENET_ActiveRead	16	static
+D:\nxp\RSE\RSE_Practices_N_S\wired_RSE\P1_Ethernet\P1_test_client\frdmk64f_lwip_tcpecho_freertos\drivers/fsl_enet.h:1260:20:ENET_EnableInterrupts	16	static
+D:\nxp\RSE\RSE_Practices_N_S\wired_RSE\P1_Ethernet\P1_test_client\frdmk64f_lwip_tcpecho_freertos\drivers/fsl_enet.h:1279:20:ENET_DisableInterrupts	16	static
 ../lwip/port/enet_ethernetif_kinetis.c:183:13:ethernet_callback	48	static
 ../lwip/port/enet_ethernetif_kinetis.c:312:14:ethernetif_rx_alloc	48	static
 ../lwip/port/enet_ethernetif_kinetis.c:340:13:ethernetif_rx_free	40	static

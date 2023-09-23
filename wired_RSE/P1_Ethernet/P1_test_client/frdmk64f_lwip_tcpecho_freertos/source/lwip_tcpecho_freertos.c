@@ -28,6 +28,12 @@
 #include "fsl_phyksz8081.h"
 #include "fsl_enet_mdio.h"
 #include "fsl_device_registers.h"
+
+#include "fsl_pit.h"
+#include "GPIO.h"
+#include "NVIC.h"
+#include "PIT.h"
+#include "DAC.h"
 /*******************************************************************************
  * Definitions
  ******************************************************************************/
@@ -107,6 +113,11 @@
 /*! @brief Priority of the temporary lwIP initialization thread. */
 #define INIT_THREAD_PRIO DEFAULT_THREAD_PRIO
 
+#define SYSTEM_CLOCK CLOCK_GetFreq(kCLOCK_BusClk)
+#define DELAY_SWITCH 1000
+#define SAMPLING_FREQUENCY (1.0f/22050)
+#define SIZE_ARRAY 7
+
 /*******************************************************************************
  * Prototypes
  ******************************************************************************/
@@ -176,11 +187,24 @@ int main(void)
     BOARD_InitBootPins();
     BOARD_InitBootClocks();
     BOARD_InitDebugConsole();
+
+    PIT_clock_gating();
+	   uint32_t clock = CLOCK_GetFreq(kCLOCK_BusClk);
+	PIT_enable();
+	PIT_enable_interrupt(PIT_0);
+	NVIC_enable_interrupt_and_priotity(PIT_CH0_IRQ, PRIORITY_5);
+	NVIC_enable_interrupt_and_priotity(PIT_CH0_IRQ, PRIORITY_4);
+
+	NVIC_global_enable_interrupts;
+	//PIT_delay(PIT_0, SYSTEM_CLOCK, SAMPLING_FREQUENCY);
+	PIT_SetTimerPeriod(DEMO_PIT_BASEADDR, PIT_0, USEC_TO_COUNT(25U,SYSTEM_CLOCK));
+
+	initDAC();
     /* Disable SYSMPU. */
     base->CESR &= ~SYSMPU_CESR_VLD_MASK;
 
     /* Initialize lwIP from thread */
-    if (sys_thread_new("main", stack_init, NULL, INIT_THREAD_STACKSIZE, INIT_THREAD_PRIO) == NULL)
+    if (sys_thread_new("main", stack_init, NULL, 256, INIT_THREAD_PRIO) == NULL)
     {
         LWIP_ASSERT("main(): Task creation failed.", 0);
     }
