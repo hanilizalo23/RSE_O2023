@@ -1,3 +1,3 @@
-# RSE_O2023
+# RSE_O2023_TEAM_WIRED
 ## Repository for Fall 2023 RSE class.
-Owners: Nelida Hernández & Sergio Borrayo.
+Owners/Team: Nelida Hernández & Sergio Borrayo.
